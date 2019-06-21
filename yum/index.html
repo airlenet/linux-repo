@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          nginx - Yum Repository, APT Repository, SUSE Repository
+          yum repo - Yum Repository, APT Repository, SUSE Repository
         
     </title>
 
-    <link rel="canonical" href="http://repo.airlenet.com/2019/06/21/nginx/">
+    <link rel="canonical" href="http://repo.airlenet.com/yum/">
 
     <!-- Bootstrap Core CSS -->
 
@@ -101,17 +101,13 @@
 			
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
                 
-                    <div class="post-heading" style="padding:40px">
-                        <div class="tags">
-                            
-                        </div>
-                        <h1>nginx</h1>
-                        <h2 class="subheading">nginx repo</h2>
-                        <span class="meta">
-                            Posted by airlenet on
-                            2019-06-21
-                        </span>
+				
+                    <div class="site-heading"  style="padding:40px">
+                        <h1>yum repo</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">Yum Repository, APT Repository, SUSE Repository</span>
                     </div>
+                
                 
                 </div>
             </div>
@@ -194,174 +190,152 @@
 
 
     <!-- Main Content -->
-    <!-- Modify by Yu-Hsuan Yen -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Post Container -->
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <h2 id="RHEL-CentOS"><a href="#RHEL-CentOS" class="headerlink" title="RHEL/CentOS"></a>RHEL/CentOS</h2><p>Install the prerequisites:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install yum-utils</span><br></pre></td></tr></table></figure>
-
-<p>To set up the yum repository, create the file named /etc/yum.repos.d/nginx.repo with the following contents:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[nginx-stable]</span><br><span class="line">name=nginx stable repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line"></span><br><span class="line">[nginx-mainline]</span><br><span class="line">name=nginx mainline repo</span><br><span class="line">baseurl=http://nginx.org/packages/mainline/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br></pre></td></tr></table></figure>
-
-<p>OR</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm </span><br><span class="line"></span><br><span class="line">rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-<p>By default, the repository for stable nginx packages is used. If you would like to use mainline nginx packages, run the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager --<span class="built_in">enable</span> nginx-mainline</span><br></pre></td></tr></table></figure>
-
-<p>To install nginx, run the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install nginx</span><br></pre></td></tr></table></figure>
-
-<p>When prompted to accept the GPG key, verify that the fingerprint matches 573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62, and if so, accept it.</p>
-<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>Install the prerequisites:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install curl gnupg2 ca-certificates lsb-release</span><br></pre></td></tr></table></figure>
-
-<p>To set up the apt repository for stable nginx packages, run the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://nginx.org/packages/ubuntu `lsb_release -cs` nginx"</span> \</span><br><span class="line">    | sudo tee /etc/apt/sources.list.d/nginx.list</span><br></pre></td></tr></table></figure>
-
-<p>If you would like to use mainline nginx packages, run the following command instead:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx"</span> \</span><br><span class="line">    | sudo tee /etc/apt/sources.list.d/nginx.list</span><br></pre></td></tr></table></figure>
-
-<p>Next, import an official nginx signing key so apt could verify the packages authenticity:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -</span><br></pre></td></tr></table></figure>
-
-<p>Verify that you now have the proper key:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key fingerprint ABF5BD827BD9BF62</span><br></pre></td></tr></table></figure>
-
-<p>The output should contain the full fingerprint 573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62 as follows:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pub   rsa2048 2011-08-19 [SC] [expires: 2024-06-14]</span><br><span class="line">      573B FD6B 3D8F BC64 1079  A6AB ABF5 BD82 7BD9 BF62</span><br><span class="line">uid   [ unknown] nginx signing key &lt;signing-key@nginx.com&gt;</span><br></pre></td></tr></table></figure>
-
-<p>To install nginx, run the following commands:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <h2 id="YUM-Repository"><a href="#YUM-Repository" class="headerlink" title="YUM Repository"></a>YUM Repository</h2><h3 id="Office-YUM-Repository"><a href="#Office-YUM-Repository" class="headerlink" title="Office YUM Repository"></a>Office YUM Repository</h3><h3 id="Nginx-YUM-Repository"><a href="#Nginx-YUM-Repository" class="headerlink" title="Nginx YUM Repository"></a>Nginx YUM Repository</h3><h3 id="MySQL-YUM-Repository"><a href="#MySQL-YUM-Repository" class="headerlink" title="MySQL YUM Repository"></a>MySQL YUM Repository</h3>
 
 
+
+                <!-- 如果开启评论功能 -->
                 
-
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
+                    <hr>
                     
+
                     
-                        <li class="next">
-                            <a href="/2019/06/21/mysql/" data-toggle="tooltip" data-placement="top" title="mysql">下一篇 &rarr;</a>
-                        </li>
+
+
                     
-                </ul>
 
-                <br>
-
-                <!--打赏-->
-                
-                <!--打赏-->
-
-                <br>
-                <!--分享-->
-                
-                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
-                    <!--  css & js -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-                
-                <!--分享-->
-                <br>                       
-                
-                <!-- require APlayer -->
-                
-
-                <!-- disqus comment start -->
-                
-                <!-- disqus comment end -->
+                    
 
                 
-				
             </div>
 
-            <!-- Tabe of Content -->
-            <!-- Table of Contents -->
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
 
-                
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">标签云</a></h5>
-                    <div class="tags">
-                       
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-                <hr>
-                <h5>FRIENDS</h5>
-                <ul class="list-inline">
-
-                    
-                        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
-                    
-                </ul>
-                
-            </div>
-        </div>
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">标签云</a></h5>
+    <div class="tags">
+        
     </div>
-</article>
+</section>
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">关于</a></h5>
+    <div class="short-about">
+
+        
+            <img id = "avatar_pic" src="/img/avatar/logo.png" />
+        
+
+        
+            <p>INNOVATION IS KING!</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
+
+            
+
+            
+
+            
+                <li>
+                    <a target="_blank"  href="https://github.com/airlenet">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+        </ul>
+    </div>
+</section>
+
+        <hr>
+    
+        
+  <h5>最近发表</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/2019/06/21/nginx/">nginx</a>
+        </li>
+      
+        <li>
+          <a href="/2019/06/21/mysql/">mysql</a>
+        </li>
+      
+        <li>
+          <a href="/2019/06/20/hexo/">Hexo</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+        
+    <h5>归档</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+
+        <hr>
+    
+        <!-- Friends Blog -->
+
+<h5>友链</h5>
+<ul class="list-inline">
+
+    
+        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
+    
+</ul>
 
 
+        <hr>
+    
+</div>
 
 
-
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'left',
-          icon: 'ℬ'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
-
+        
+    </div>
+</div>
 
 
     <!-- Footer -->
@@ -466,7 +440,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://repo.airlenet.com/2019/06/21/nginx/index.html/js/jquery.tagcloud.js",function(){
+        async("http://repo.airlenet.com/yum/index.html/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
