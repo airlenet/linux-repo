@@ -1,0 +1,4 @@
+[submodule "themes/ace"]
+	path = themes/ace
+	url = https://github.com/airshiplay/hexo-theme-ace.git
+	ignore = dirty

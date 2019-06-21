@@ -5,8 +5,8 @@
 # Site
 title: Linux Repository
 subtitle: Yum Repository, APT Repository, SUSE Repository
-description:
-keywords:
+description: Yum Repository, APT Repository, SUSE Repository
+keywords: Yum Repository, APT Repository, SUSE Repository
 author: airlenet
 language: zh-CN
 timezone:
@@ -20,7 +20,7 @@ permalink_defaults:
 
 # Directory
 source_dir: source
-public_dir: docs
+public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
@@ -43,7 +43,7 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -52,7 +52,7 @@ index_generator:
   path: ''
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -70,14 +70,16 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/ jekyll-theme-cayman
-theme: landscape
+theme: ace
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
   repo: https://github.com/airlenet/linux-repo.git
-  branch: master
+  branch: gh-pages
+
